@@ -1,0 +1,13 @@
+# Agent Status Files
+# Deze zijn session-specific en moeten NIET gecommit worden
+
+# Ignore alle status files behalve template en README
+*_status.md
+!TEMPLATE_status.md
+
+# Keep README en template
+!README.md
+!.gitignore
+
+# Archive directory (optioneel)
+archive/

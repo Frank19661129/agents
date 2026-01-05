@@ -1,0 +1,4 @@
+# Don't commit session files - deze zijn runtime state
+session-context.md
+
+# Wel committen: team-context.md (persistent team state)

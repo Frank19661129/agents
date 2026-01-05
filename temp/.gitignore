@@ -1,0 +1,4 @@
+# Ignore all merged prompt files (generated runtime)
+merged-*.md
+
+# These are temporary files created by merge-context.ps1
