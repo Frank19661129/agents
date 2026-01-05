@@ -96,6 +96,73 @@ A field name mismatch caused a critical bug where:
 
 📖 See: `/docs/NAMING_CONVENTIONS.md` for complete reference
 
+## UI Development & Testing
+
+### CRITICAL: Localhost Check voor UI Wijzigingen
+
+**Bij ELKE UI wijziging moet je ZELF een localhost check doen VOORDAT je de gebruiker vraagt te refreshen.**
+
+Dit voorkomt frustratie door:
+- Harde refreshes terwijl code nog niet geladen is
+- Docker containers die nog niet gestart zijn
+- Vite die nog niet klaar is met compileren
+
+#### Procedure bij UI wijzigingen:
+
+1. **Maak de code wijziging**
+   ```bash
+   # Bijvoorbeeld: fix button layout in TemplatesPage.tsx
+   ```
+
+2. **Restart de frontend container (indien nodig)**
+   ```bash
+   cd /d/dev/insurance-data
+   docker-compose restart frontend
+   sleep 15  # Wacht tot Vite klaar is
+   ```
+
+3. **VERIFICATIE: Localhost check**
+   ```bash
+   # Check of de source code correct geserveerd wordt
+   curl -s -k "https://localhost:3001/src/components/ui/Button.tsx" | grep -C 2 "children"
+
+   # Check of de juiste commit hash geserveerd wordt
+   curl -s -k "https://localhost:3001/src/components/layout/Header.tsx" | grep "GIT_COMMIT"
+   ```
+
+4. **Alleen dan mag je vragen om browser refresh**
+   ```
+   ✅ Frontend is klaar. Doe nu een hard refresh met Ctrl + F5
+   ```
+
+#### Voorbeeld Workflow:
+
+```bash
+# ❌ FOUT (vroeger):
+# 1. Code wijziging maken
+# 2. Commit + push
+# 3. Direct vragen: "Refresh je browser met Ctrl+F5"
+# 4. Gebruiker: "Ik zie nog niks" → frustratie!
+
+# ✅ GOED (nu):
+# 1. Code wijziging maken
+# 2. docker-compose restart frontend
+# 3. sleep 15
+# 4. curl -s -k "https://localhost:3001/src/..." | grep "keyword"
+# 5. Verificatie: code is correct geladen
+# 6. Commit + push
+# 7. Nu pas vragen: "Refresh je browser met Ctrl+F5"
+```
+
+#### Wat te checken:
+
+- ✅ Container is restarted (`docker-compose ps`)
+- ✅ Vite is ready (`docker-compose logs --tail=10 frontend | grep "ready"`)
+- ✅ Source files bevatten de juiste code (`curl -s -k https://localhost:3001/src/...`)
+- ✅ GIT_COMMIT hash is bijgewerkt in Header.tsx
+
+**Deze procedure scheelt veel tijd en frustratie!**
+
 ## Output Format
 
 ```python
