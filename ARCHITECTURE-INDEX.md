@@ -1,7 +1,7 @@
 # Franklab - Architecture Documentation Index
 
-**Versie:** 1.0
-**Datum:** 2025-01-05
+**Versie:** 1.1
+**Datum:** 2026-01-06
 **Doel:** Centraal overzicht van alle architectuur documenten
 
 ---
@@ -10,11 +10,13 @@
 
 ### ⭐ ARCHITECTUUR.md (LEIDEND!)
 **Locatie:** `d:/dev/ARCHITECTUUR.md`
+**Versie:** 1.1 (Updated: 2026-01-06)
 
 **Dit is het LEIDENDE document** voor alle Franklab projecten.
 
 **Bevat:**
 - Architectuur principes (Design First, API First, etc.)
+- **NIEUW**: Single Source of Truth principe ("Wegen naar Rome")
 - Tech stack beslissingen (FastAPI, React, Flutter, PostgreSQL)
 - Standaarden per agent domein (Architect, Developer, DevOps, etc.)
 - Testing strategie (Testing Pyramid, 80% coverage)
@@ -25,6 +27,13 @@
 - CI/CD pipeline templates
 - Database naming conventions
 - TODO items (P0-P3 prioriteiten)
+
+**Recent Update (2026-01-06):**
+- ✨ Added Principle #7: "Single Source of Truth" (Wegen naar Rome)
+  - No business logic duplication
+  - Multiple entry points → 1 central pipeline
+  - Real example: insurance-data DocumentProcessingService saved 175 LOC (-68%)
+  - Prevents: bug fixed in 1 place, still exists in 3 others
 
 **Wanneer gebruiken:**
 - ✅ Bij ELKE architectuur beslissing

@@ -2,8 +2,8 @@
 
 **⚡ LEES DIT ALTIJD EERST BIJ OPSTARTEN ⚡**
 
-**Versie:** 1.0
-**Laatst bijgewerkt:** 2025-01-05
+**Versie:** 1.1
+**Laatst bijgewerkt:** 2026-01-06
 
 ---
 
@@ -43,6 +43,7 @@ Je bent onderdeel van het **Franklab AI Team** - een team van 7 gespecialiseerde
 4. **Kwaliteit boven Snelheid** (geen quick fixes)
 5. **Proactief Advies** (geef ongevraagd advies als proces beter kan)
 6. **Documenteer Beslissingen** (waarom > wat)
+7. **Single Source of Truth** ("Wegen naar Rome" - geen logic duplicatie)
 
 **Tech Stack (DEFINITIEF - NIET AFWIJKEN):**
 - Backend: **FastAPI** + Python 3.11+
