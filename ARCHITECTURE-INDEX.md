@@ -1,8 +1,10 @@
 # Franklab - Architecture Documentation Index
 
-**Versie:** 1.1
+**Versie:** 1.2
 **Datum:** 2026-01-06
 **Doel:** Centraal overzicht van alle architectuur documenten
+
+**Laatste wijziging:** Added LESSONS-LEARNED.md voor real-world troubleshooting patterns
 
 ---
 
@@ -182,6 +184,25 @@
 - Merge-context.ps1 script uitleg
 - Troubleshooting
 
+### Lessons Learned
+**Locatie:** `d:/dev/agents/LESSONS-LEARNED.md`
+
+**Bevat:**
+- Real-world lessen uit Franklab projecten
+- CORS & Authentication pitfalls (wildcard origins + credentials)
+- Binary response patterns (StreamingResponse vs Response)
+- Error handling best practices (failed file management)
+- Dependencies & service interactions
+- Code voorbeelden + preventie checklists
+- Template voor nieuwe lessons
+
+**Wanneer gebruiken:**
+- ✅ Voor deployment bugs waar je lang op hebt gezeten
+- ✅ Bij CORS/auth configuratie (check Lesson #1!)
+- ✅ Bij binary file serving (images, PDFs - check Lesson #2)
+- ✅ Bij code review (check of pattern al gedocumenteerd is)
+- ✅ Bij onboarding nieuwe agents (leer van fouten)
+
 ---
 
 ## 🔄 Hoe Documenten te Gebruiken
@@ -278,6 +299,9 @@
 | **Database** | ARCHITECTUUR.md (sectie: Database Naming Conventions) |
 | **Error Handling** | ARCHITECTUUR.md (sectie: Error Handling) |
 | **Logging** | ARCHITECTUUR.md (sectie: Logging & Monitoring) |
+| **CORS Issues** | **LESSONS-LEARNED.md (Lesson #1)** ⭐ |
+| **Binary Responses** | **LESSONS-LEARNED.md (Lesson #2)** ⭐ |
+| **Troubleshooting** | **LESSONS-LEARNED.md** ⭐ |
 | **Agent Profielen** | TEAM-ROSTER.md |
 | **Status Format** | STATUS-PROTOCOL.md |
 | **Team Workflow** | STARTUP-CONTEXT.md |
@@ -407,8 +431,29 @@ git commit -m "docs({scope}): {wat je wijzigde en waarom}"
 
 ---
 
-**Versie:** 1.0
-**Auteur:** Ulle (AI Team Lead)
-**Laatst bijgewerkt:** 2025-01-05
+**Versie:** 1.2
+**Auteur:** Ulle (AI Team Lead) + Claude (AI Developer)
+**Laatst bijgewerkt:** 2026-01-06
 
 **🎯 "Goede documentatie is de tweede-beste vorm van communicatie na daadwerkelijk praten."**
+
+---
+
+## 📝 Changelog
+
+### v1.2 - 2026-01-06
+- ✨ Added **LESSONS-LEARNED.md** document
+  - Lesson #1: CORS met Credentials (wildcard origins issue)
+  - Lesson #2: StreamingResponse vs Response voor binary data
+  - Lesson #3: Failed document processing (_Fail folder pattern)
+  - Lesson #4: Backend restart & token invalidation
+- 📚 Added quick reference links in "By Topic" sectie
+- 🎯 Template voor nieuwe lessons
+
+### v1.1 - 2026-01-06
+- ✨ Added Single Source of Truth principle in ARCHITECTUUR.md
+- 📊 Real example: DocumentProcessingService refactoring
+
+### v1.0 - 2025-01-05
+- 🎉 Initial release
+- 📚 Gestructureerd overzicht van alle architectuur documenten
